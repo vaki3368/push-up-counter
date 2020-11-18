@@ -17,6 +17,7 @@ void setup()
   lcd.begin();
   lcd.backlight();
   lcd.print("Total: ");
+  //eepromWriteInt(adresse, 525);
   total = eepromReadInt(adresse);
   lcd.print(total);
   lcd.setCursor(0, 1);
@@ -38,8 +39,10 @@ void loop()
       lcd.print(total);
       sessionDetectorCounter = 0;
   }
-  else if(dist > 45) {
+  else if(dist > 45 && dist < 90) {
     up = true;
+  }
+  else if(dist > 90) {
     sessionDetectorCounter++;
   }
 
